@@ -1,4 +1,4 @@
-# Processor (Popo2)
+# Processor 
 
 Modern process tracking desktop app built with Electron, Vite and React.
 
@@ -7,7 +7,7 @@ Modern process tracking desktop app built with Electron, Vite and React.
 [![GitHub stars](https://img.shields.io/github/stars/mada-gaskar/processor-app)](https://github.com/mada-gaskar/processor-app/stargazers)
 
 ## Overview
-- Multi-user profiles with processes and steps
+- DASHBOARD with processes and steps
 - Drag-and-drop step reordering and status tracking
 - Backup download and Upload/Merge (supports legacy JSON migration)
 - Dark/Light theme
