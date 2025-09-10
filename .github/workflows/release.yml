@@ -22,23 +22,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: popo2
 
       - name: Build installer (electron-builder)
         run: npm run build
-        working-directory: popo2
 
       - name: Build portable zip (electron-packager)
         run: npm run pack:win
-        working-directory: popo2
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           draft: true
           files: |
-            popo2/release/*.zip
-            popo2/release/*/*.zip
-            popo2/release/*/*.exe
+            release/*.zip
+            release/*/*.zip
+            release/*/*.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

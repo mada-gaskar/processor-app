@@ -21,22 +21,18 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: popo2
 
       - name: Lint
         run: npm run lint
-        working-directory: popo2
 
       - name: Run tests
         run: npm test
-        working-directory: popo2
 
       - name: Build (electron-builder)
         run: npm run build
-        working-directory: popo2
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: popo2-windows-build
-          path: popo2/release
+          path: release
