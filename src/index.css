@@ -1,0 +1,10 @@
+/* Reset and theme variables inserted by UI */
+@import './ui/styles.css';
+
+*{box-sizing:border-box}
+:root{color:#e5e7eb;background:#0f172a}
+@media (prefers-color-scheme: light){:root{color:#111827;background:#f6f7fb}}
+
+html,body,#root{height:100%;margin:0}
+
+h2{margin:0 0 8px 0}

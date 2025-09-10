@@ -1,0 +1,82 @@
+:root{--bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#9ca3af;--accent:#7c3aed;--border:#1f2937}
+:root[data-theme='light']{--bg:#f6f7fb;--panel:#ffffff;--text:#111827;--muted:#6b7280;--accent:#7c3aed;--border:#e5e7eb}
+
+html,body,#root{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+
+.app{display:grid;grid-template-columns:280px 1fr;height:100%}
+.sidebar{background:linear-gradient(180deg,#0b0f1a,transparent),var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:16px;gap:12px}
+.brand{font-weight:800;letter-spacing:.08em;color:var(--text)}
+.profile{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid var(--border);border-radius:12px;background:rgba(0,0,0,.05)}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:white;font-weight:700}
+.name{font-weight:700}
+.role{font-size:12px;color:var(--muted)}
+nav{display:flex;flex-direction:column}
+nav a{padding:10px 12px;border-radius:10px;color:var(--text)}
+nav a.active{background:var(--accent);color:white}
+.spacer{flex:1}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:10px 12px;border-radius:10px}
+.toggle .dot{width:16px;height:16px;border-radius:100%;border:2px solid var(--text);opacity:.5}
+.toggle .dot.on{background:var(--accent);border-color:var(--accent);opacity:1}
+.secondary{background:transparent;border:1px dashed var(--border);color:var(--muted);padding:8px 10px;border-radius:10px}
+
+.content{padding:24px;overflow:auto}
+.center{height:100%;display:grid;place-items:center}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.progress{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
+.progress>span{display:block;height:100%;background:var(--accent)}
+
+.row{display:flex;align-items:center;gap:10px}
+.input, .button{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text)}
+.button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.list{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px}
+.item .title{flex:1}
+.item input[type='checkbox']{width:18px;height:18px}
+.small{font-size:12px;color:var(--muted)}
+
+/* Bright, cool palette for date/time controls only (non-invasive) */
+:root{
+  --control-bg:#f8fafc;
+  --control-text:#0f172a;
+  --control-border:#93c5fd;
+  --control-focus:#3b82f6;
+  --control-glow:rgba(59,130,246,.28);
+}
+:root[data-theme='light']{
+  --control-bg:#ffffff;
+  --control-text:#111827;
+  --control-border:#93c5fd;
+  --control-focus:#3b82f6;
+  --control-glow:rgba(59,130,246,.20);
+}
+
+/* Target only the date/time inputs that use the .input class */
+input.input[type='date'],
+input.input[type='time'],
+input.input[type='datetime-local']{
+  background: linear-gradient(180deg,#ffffff 0%, var(--control-bg) 100%);
+  color: var(--control-text);
+  border-color: var(--control-border);
+  color-scheme: light; /* show native pickers in light scheme even in dark mode */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+input.input[type='date']:focus,
+input.input[type='time']:focus,
+input.input[type='datetime-local']:focus{
+  outline: none;
+  border-color: var(--control-focus);
+  box-shadow: 0 0 0 3px var(--control-glow);
+}
+
+/* Slightly enhance the calendar/clock icons for visibility */
+input.input[type='date']::-webkit-calendar-picker-indicator,
+input.input[type='time']::-webkit-calendar-picker-indicator,
+input.input[type='datetime-local']::-webkit-calendar-picker-indicator{
+  filter: saturate(1.2) brightness(1.05) hue-rotate(8deg);
+  opacity: .9;
+}

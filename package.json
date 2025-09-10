@@ -1,0 +1,65 @@
+{
+  "name": "popo2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "electron/main.js",
+  "build": {
+    "appId": "com.popo2.app",
+    "productName": "Popo2",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "scripts": {
+    "dev": "concurrently \"vite --port 5174\" \"wait-on http://localhost:5174 && electron .\"",
+    "build": "cross-env ELECTRON_BUILDER_DISABLE_CODE_SIGNING=true CSC_IDENTITY_AUTO_DISCOVERY=false vite build && electron-builder",
+    "pack:win": "vite build && electron-packager . Popo2 --platform=win32 --arch=x64 --out=release --overwrite --asar --prune=true --executable-name=Popo2 --app-version=%npm_package_version% --ignore=\"/public|/tests|/vitest.*|/README.md|/Start App.bat|/vitest.*|/eslint.*|/node_modules/.cache\"",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.6.0",
+    "sql.js": "^1.13.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.1.2",
+    "cross-env": "^10.0.0",
+    "electron": "^38.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "jsdom": "^25.0.1",
+    "vitest": "^2.1.5",
+    "wait-on": "^8.0.1"
+  }
+}
