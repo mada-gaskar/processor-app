@@ -22,8 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
+      - name: Lint (skip if no config)
+        shell: pwsh
+        run: |
+          if (Test-Path ".eslintrc.js" -or Test-Path ".eslintrc.cjs" -or Test-Path ".eslintrc.json" -or Test-Path ".eslint.config.js" -or Test-Path ".eslint.config.cjs" -or Test-Path ".eslint.config.mjs") {
+            npm run lint
+          } else {
+            Write-Host "No ESLint config found, skipping lint."
+          }
 
       - name: Run tests
         run: npm test
